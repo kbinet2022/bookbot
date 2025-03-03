@@ -25,6 +25,4 @@ def reorganize_dictionary(dictionary):
             dictionary_list.append(new_dict)
     
     dictionary_list.sort(reverse=True, key=sort_dictionary)
-    print(dictionary_list)
-
     return dictionary_list
