@@ -12,3 +12,19 @@ def get_character_count(unfiltered_text):
         else:
             letter_count[character] = 1
     return letter_count
+
+def sort_dictionary(dictionary):
+    return dictionary["num"]
+
+def reorganize_dictionary(dictionary):
+
+    dictionary_list = []
+    for key, value in dictionary.items():
+        if key.isalpha() == True:
+            new_dict = {"letter": key, "num": value}
+            dictionary_list.append(new_dict)
+    
+    dictionary_list.sort(reverse=True, key=sort_dictionary)
+    print(dictionary_list)
+
+    return dictionary_list
