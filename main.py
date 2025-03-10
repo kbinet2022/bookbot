@@ -1,7 +1,7 @@
 from stats import get_word_count
 from stats import get_character_count
-from stats import sort_dictionary
 from stats import reorganize_dictionary
+import sys
 
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
@@ -11,24 +11,26 @@ def get_book_text(path_to_file):
 def print_report(path_to_file, num_words, dictionary_list):
         print("============ BOOKBOT ============")
 
-        #this line can be changed to specific file path
-        print("Analyzing book found at books/frankenstein.txt...")
+        print(f"Analyzing book found at {path_to_file}...")
 
         print("----------- Word Count ----------")
         print(f"Found {num_words} total words" )
 
         print("--------- Character Count -------")
         for dict in dictionary_list:
-             print(dict["letter"], end="")
-             print(": ", end="")
-             print(dict["num"])
+             print(f"{dict["letter"]}: {dict["num"]}")
 
 
 def main():
 
 
     # places text of book into string
-    path_to_file = "./books/frankenstein.txt"
+    if sys.argv[1] != None:
+        path_to_file = sys.argv[1]
+    else:
+         print("Usage: python3 main.py ./books/<bookname.txt>")
+         sys.exit(1)
+
     unfiltered_text = get_book_text(path_to_file)
 
 
